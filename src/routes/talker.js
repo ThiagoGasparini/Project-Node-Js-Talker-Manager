@@ -2,6 +2,7 @@ const express = require('express');
 const { readContentFile } = require('../utils/readFile');
 const { writeUser } = require('../utils/writeUser');
 const editUser = require('../utils/editUser');
+const deleteUser = require('../utils/deleteUsers');
 const validaName = require('../middlewares/validaName');
 const validaAge = require('../middlewares/validaAge');
 const validaRate = require('../middlewares/validaRate');
@@ -58,5 +59,7 @@ router.put(
   validaRate,
   editUser,
 );
+
+router.delete('/:id', validaToken, deleteUser);
 
 module.exports = router;

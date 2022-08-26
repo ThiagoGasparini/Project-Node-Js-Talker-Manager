@@ -1,6 +1,7 @@
 const express = require('express');
 const { readContentFile } = require('../utils/readFile');
 const { writeUser } = require('../utils/writeUser');
+const editUser = require('../utils/editUser');
 const validaName = require('../middlewares/validaName');
 const validaAge = require('../middlewares/validaAge');
 const validaRate = require('../middlewares/validaRate');
@@ -45,6 +46,17 @@ router.post(
   validaWatchedAt,
   validaRate,
   writeUser,
+);
+
+router.put(
+  '/:id',
+  validaToken,
+  validaName,
+  validaAge,
+  validaTalk,
+  validaWatchedAt,
+  validaRate,
+  editUser,
 );
 
 module.exports = router;

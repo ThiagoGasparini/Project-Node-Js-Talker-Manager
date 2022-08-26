@@ -3,6 +3,7 @@ const { readContentFile } = require('../utils/readFile');
 const { writeUser } = require('../utils/writeUser');
 const editUser = require('../utils/editUser');
 const deleteUser = require('../utils/deleteUsers');
+const searchUser = require('../utils/searchUsers');
 const validaName = require('../middlewares/validaName');
 const validaAge = require('../middlewares/validaAge');
 const validaRate = require('../middlewares/validaRate');
@@ -11,6 +12,8 @@ const validaToken = require('../middlewares/validaToken');
 const validaWatchedAt = require('../middlewares/validaWatchedAt');
 
 const router = express.Router();
+
+router.get('/search', validaToken, searchUser);
 
 router.get('/', async (_req, res) => {
   try {
